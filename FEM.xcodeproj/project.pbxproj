@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B5C721A01F5895B500AAF529 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C7219F1F5895B500AAF529 /* main.cpp */; };
+		B5C721A81F58963700AAF529 /* readFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C721A61F58963700AAF529 /* readFile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		B5C7219C1F5895B500AAF529 /* FEM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FEM; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C7219F1F5895B500AAF529 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B5C721A61F58963700AAF529 /* readFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = readFile.cpp; sourceTree = "<group>"; };
+		B5C721A71F58963700AAF529 /* readFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = readFile.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				B5C7219F1F5895B500AAF529 /* main.cpp */,
+				B5C721A61F58963700AAF529 /* readFile.cpp */,
+				B5C721A71F58963700AAF529 /* readFile.hpp */,
 			);
 			path = FEM;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 				TargetAttributes = {
 					B5C7219B1F5895B500AAF529 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 75NJ3M2537;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -120,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C721A01F5895B500AAF529 /* main.cpp in Sources */,
+				B5C721A81F58963700AAF529 /* readFile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,14 +225,20 @@
 		B5C721A41F5895B500AAF529 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 75NJ3M2537;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		B5C721A51F5895B500AAF529 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 75NJ3M2537;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

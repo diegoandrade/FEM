@@ -9,28 +9,31 @@
 #ifndef readFile_hpp
 #define readFile_hpp
 
-#include <sstream>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <string>
-
-#include <stdio.h>
+#include "Common.h"
+#include "nodeInput.hpp"
+#include "stiffnessMatrix.hpp"
 
 class readFile{
-protected:
+    
+public:
     int numberOfElements;
     int numberOfNodes;
     int numberOfConnections;
     double E; //modulus of elasticity
     double A; //area
-    
-public:
+
     
     readFile();
     ~readFile();
     
-    void read();
+    nodeInput* nodes;
+    nodeInput* conn;
+    stiffnessMatrix* kelement;
+    
+    int interiorCounter;
+    
+    void readWorkingFile(const char* file);
+    
 
 
 };

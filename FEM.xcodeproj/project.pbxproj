@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B518D5331F58F3E20022C51E /* nodeInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B518D5311F58F3E20022C51E /* nodeInput.cpp */; };
 		B5C721A01F5895B500AAF529 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C7219F1F5895B500AAF529 /* main.cpp */; };
 		B5C721A81F58963700AAF529 /* readFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C721A61F58963700AAF529 /* readFile.cpp */; };
+		B5D944031F5B630600B3683F /* stiffnessMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D944011F5B630600B3683F /* stiffnessMatrix.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B518D5301F58F14D0022C51E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		B518D5311F58F3E20022C51E /* nodeInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nodeInput.cpp; sourceTree = "<group>"; };
+		B518D5321F58F3E20022C51E /* nodeInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = nodeInput.hpp; sourceTree = "<group>"; };
 		B5C7219C1F5895B500AAF529 /* FEM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FEM; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C7219F1F5895B500AAF529 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B5C721A61F58963700AAF529 /* readFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = readFile.cpp; sourceTree = "<group>"; };
 		B5C721A71F58963700AAF529 /* readFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = readFile.hpp; sourceTree = "<group>"; };
+		B5D944011F5B630600B3683F /* stiffnessMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stiffnessMatrix.cpp; sourceTree = "<group>"; };
+		B5D944021F5B630600B3683F /* stiffnessMatrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stiffnessMatrix.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +67,14 @@
 		B5C7219E1F5895B500AAF529 /* FEM */ = {
 			isa = PBXGroup;
 			children = (
+				B518D5301F58F14D0022C51E /* Common.h */,
 				B5C7219F1F5895B500AAF529 /* main.cpp */,
 				B5C721A61F58963700AAF529 /* readFile.cpp */,
 				B5C721A71F58963700AAF529 /* readFile.hpp */,
+				B518D5311F58F3E20022C51E /* nodeInput.cpp */,
+				B518D5321F58F3E20022C51E /* nodeInput.hpp */,
+				B5D944011F5B630600B3683F /* stiffnessMatrix.cpp */,
+				B5D944021F5B630600B3683F /* stiffnessMatrix.hpp */,
 			);
 			path = FEM;
 			sourceTree = "<group>";
@@ -127,6 +139,8 @@
 			files = (
 				B5C721A01F5895B500AAF529 /* main.cpp in Sources */,
 				B5C721A81F58963700AAF529 /* readFile.cpp in Sources */,
+				B5D944031F5B630600B3683F /* stiffnessMatrix.cpp in Sources */,
+				B518D5331F58F3E20022C51E /* nodeInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +275,7 @@
 				B5C721A51F5895B500AAF529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B518D5331F58F3E20022C51E /* nodeInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B518D5311F58F3E20022C51E /* nodeInput.cpp */; };
+		B53D46EF1F5E0E9600519221 /* matrixUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B53D46ED1F5E0E9600519221 /* matrixUtil.cpp */; };
 		B5C721A01F5895B500AAF529 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C7219F1F5895B500AAF529 /* main.cpp */; };
 		B5C721A81F58963700AAF529 /* readFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C721A61F58963700AAF529 /* readFile.cpp */; };
 		B5D944031F5B630600B3683F /* stiffnessMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D944011F5B630600B3683F /* stiffnessMatrix.cpp */; };
@@ -29,6 +30,9 @@
 		B518D5301F58F14D0022C51E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		B518D5311F58F3E20022C51E /* nodeInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nodeInput.cpp; sourceTree = "<group>"; };
 		B518D5321F58F3E20022C51E /* nodeInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = nodeInput.hpp; sourceTree = "<group>"; };
+		B53D46ED1F5E0E9600519221 /* matrixUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrixUtil.cpp; sourceTree = "<group>"; };
+		B53D46EE1F5E0E9600519221 /* matrixUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = matrixUtil.hpp; sourceTree = "<group>"; };
+		B53D46F01F5E338F00519221 /* FEMdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMdef.h; sourceTree = "<group>"; };
 		B5C7219C1F5895B500AAF529 /* FEM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FEM; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C7219F1F5895B500AAF529 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B5C721A61F58963700AAF529 /* readFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = readFile.cpp; sourceTree = "<group>"; };
@@ -67,6 +71,9 @@
 		B5C7219E1F5895B500AAF529 /* FEM */ = {
 			isa = PBXGroup;
 			children = (
+				B53D46ED1F5E0E9600519221 /* matrixUtil.cpp */,
+				B53D46F01F5E338F00519221 /* FEMdef.h */,
+				B53D46EE1F5E0E9600519221 /* matrixUtil.hpp */,
 				B518D5301F58F14D0022C51E /* Common.h */,
 				B5C7219F1F5895B500AAF529 /* main.cpp */,
 				B5C721A61F58963700AAF529 /* readFile.cpp */,
@@ -138,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C721A01F5895B500AAF529 /* main.cpp in Sources */,
+				B53D46EF1F5E0E9600519221 /* matrixUtil.cpp in Sources */,
 				B5C721A81F58963700AAF529 /* readFile.cpp in Sources */,
 				B5D944031F5B630600B3683F /* stiffnessMatrix.cpp in Sources */,
 				B518D5331F58F3E20022C51E /* nodeInput.cpp in Sources */,

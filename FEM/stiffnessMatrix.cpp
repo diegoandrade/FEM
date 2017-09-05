@@ -132,7 +132,7 @@ void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInp
     {
         for (int j=0;j<numberOfNodes*numberOfNodes; j++)
         {
-            marray[i][j]= i;
+            marray[i][j]= 0;
         }
     }
     
@@ -167,7 +167,7 @@ void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInp
     GLOBAL_K = marray;
 
     //output the array
-    for (int i=0; i<numberOfNodes*numberOfNodes ; i++)
+    /*for (int i=0; i<numberOfNodes*numberOfNodes ; i++)
     {
         for (int j=0;j<numberOfNodes*numberOfNodes; j++)
         {
@@ -175,14 +175,14 @@ void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInp
         }
         cout << endl;
     }
-    cout << endl;
+    cout << endl;*/
     
     //deallocate memory
-    for(int i=0;i<numberOfNodes;i++)
+    /*for(int i=0;i<numberOfNodes;i++)
     {
         delete[] marray[i];
     }
-    delete [] marray;
+    delete [] marray;*/
     
 }
 

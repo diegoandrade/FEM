@@ -22,6 +22,8 @@
 #include <iterator>
 #include <cmath>
 
+#include "FEMdef.h"
+
 //use to sort arrays
 #include <set>
 

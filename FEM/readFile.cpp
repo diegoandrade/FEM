@@ -7,6 +7,7 @@
 //
 
 #include "readFile.hpp"
+#include "matrixUtil.hpp"
 
 readFile::readFile()
 {
@@ -22,6 +23,8 @@ void readFile::readWorkingFile(const char* file)
 {
     nodes = (nodeInput *) malloc(1000*sizeof(nodeInput)); //max number of nodes in this implementation
     conn = (nodeInput *) malloc(1000*sizeof(nodeInput)); //max number connectivity (WRONG!)
+    
+   
     
     int nodeCounter = 0;
     int connectivityCounter = 0;
@@ -157,8 +160,72 @@ void readFile::readWorkingFile(const char* file)
         kelement[1].printMtrx(to_string(1));
         kelement[2].printMtrx(to_string(2));
         kelement[3].printMtrx(to_string(3));
+        
+        matrixUtil matrixA, matrixB, matrixC;
 
-        globalMatrix.globalMatrix(numberOfNodes, kelement[3], conn[3]);
+        globalMatrix.globalMatrix(numberOfNodes, kelement[0], conn[0]);
+        
+        matrixA.m = numberOfNodes*numberOfNodes;
+        matrixA.n = numberOfNodes*numberOfNodes;
+        
+        cout << "m= " << matrixA.m << " n= " << matrixA.n << "\n";
+        
+        cout << "MATRIX A: \n";
+
+        
+        matrixA.MX = globalMatrix.GLOBAL_K;
+        
+        for (int i=0;i<numberOfNodes*numberOfNodes; i++)
+        {
+            for(int j=0;j<numberOfNodes*numberOfNodes;j++)
+            {
+                
+                //cout << globalMatrix.GLOBAL_K[i][j] << "\t";
+                cout << matrixA.MX[i][j] << "\t\t";
+            }
+            cout << "\n" ;
+        }
+
+        cout << "\nMATRIX B: \n";
+
+        
+        globalMatrix.globalMatrix(numberOfNodes, kelement[1], conn[1]);
+        matrixB.m = numberOfNodes*numberOfNodes;
+        matrixB.n = numberOfNodes*numberOfNodes;
+        matrixB.MX = globalMatrix.GLOBAL_K;
+        
+        for (int i=0;i<numberOfNodes*numberOfNodes; i++)
+        {
+            for(int j=0;j<numberOfNodes*numberOfNodes;j++)
+            {
+                
+                //cout << globalMatrix.GLOBAL_K[i][j] << "\t";
+                cout << matrixB.MX[i][j] << "\t\t";
+            }
+            cout << "\n" ;
+        }
+        
+        
+        matrixC.m = numberOfNodes*numberOfNodes;
+        matrixC.n = numberOfNodes*numberOfNodes;
+        //matrixC = matrixA + matrixB;
+
+        matrixC.MX = matrixC.sumMatrix(matrixA.MX, matrixB.MX, numberOfNodes*numberOfNodes);
+        
+        for (int i=0;i<numberOfNodes*numberOfNodes; i++)
+        {
+            for(int j=0;j<numberOfNodes*numberOfNodes;j++)
+            {
+                
+                //cout << globalMatrix.GLOBAL_K[i][j] << "\t";
+                cout << matrixC.MX[i][j] << "\t\t";
+            }
+            cout << "\n" ;
+        }
+        
+
+        
+
         
     }
     

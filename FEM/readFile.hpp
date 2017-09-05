@@ -17,22 +17,27 @@ class readFile{
     
 public:
     int numberOfElements;
-    int numberOfNodes;
+    int numberOfNodesGlobal;
     int numberOfConnections;
     double E; //modulus of elasticity
     double A; //area
+    double L; //length
 
     
     readFile();
     ~readFile();
     
-    nodeInput* nodes;
+    nodeInput* elements;
     nodeInput* conn;
     stiffnessMatrix* kelement;
     
     int interiorCounter;
     
     void readWorkingFile(const char* file);
+    
+    double** readWorkFile(const char* file);
+    
+   
     
 
 

@@ -25,26 +25,42 @@ stiffnessMatrix::~stiffnessMatrix()
 
 void stiffnessMatrix::elementStiffnessMatrix(double A, double L, double E, double ang)
 {
+    double k = double(A*E)/L ;
     
-    kElement[0][0] = pow(cos(ang),2);
-    kElement[0][1] = sin(ang)*cos(ang);
-    kElement[0][2] = - pow(cos(ang),2);
-    kElement[0][3] = - sin(ang)*cos(ang);
+    double nang = 0;
+    nang = gradToRad(ang);
+    
+    kElement[0][0] = k* pow(cos(nang),2);
+    kElement[0][1] = k* sin(nang)*cos(nang);
+    kElement[0][2] = k* (- pow(cos(nang),2));
+    kElement[0][3] = k* (- sin(nang)*cos(nang));
    
-    kElement[1][0] = sin(ang)*cos(ang);
-    kElement[1][1] = pow(sin(ang),2);
-    kElement[1][2] = - sin(ang)*cos(ang);
-    kElement[1][3] = - pow(sin(ang),2);
+    kElement[1][0] = k* (sin(nang)*cos(nang));
+    kElement[1][1] = k* (pow(sin(nang),2));
+    kElement[1][2] = k* (- sin(nang)*cos(nang));
+    kElement[1][3] = k* (- pow(sin(nang),2));
 
-    kElement[2][0] = - pow(cos(ang),2);
-    kElement[2][1] = - sin(ang)*cos(ang);
-    kElement[2][2] = pow(cos(ang),2);
-    kElement[2][3] = sin(ang)*cos(ang);
+    kElement[2][0] = k* (- pow(cos(nang),2));
+    kElement[2][1] = k* (- sin(nang)*cos(nang));
+    kElement[2][2] = k* (pow(cos(nang),2));
+    kElement[2][3] = k* (sin(nang)*cos(nang));
     
-    kElement[3][0] = - sin(ang)*cos(ang);
-    kElement[3][1] = - pow(sin(ang),2);
-    kElement[3][2] = sin(ang)*cos(ang);
-    kElement[3][3] = pow(sin(ang),2);
+    kElement[3][0] = k* (- sin(nang)*cos(nang));
+    kElement[3][1] = k* (- pow(sin(nang),2));
+    kElement[3][2] = k* (sin(nang)*cos(nang));
+    kElement[3][3] = k* (pow(sin(nang),2));
+    
+    
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++)
+        {
+            if (kElement[i][j]<0.0000000001 && kElement[i][j]>=0 ){kElement[i][j]=0.0;}
+            else if (kElement[i][j]>-0.0000000001 && kElement[i][j]<=0) kElement[i][j]=0.0;
+            
+            
+        }
+    }
+    
  
 }
 
@@ -78,7 +94,8 @@ void stiffnessMatrix::printMtrx(string name)
     {
         for(int j = 0 ; j < 4 ; j++)
         {
-            cout << "k[" << i << "][" << j << "]:\t" << kElement[i][j] << "\t" ;
+            cout << "|  k[" << i << "][" << j << "]: " << setw(8) << kElement[i][j] << "|";
+            //cout << "k[" << i << "][" << j << "]:\t" << kElement[i][j] << "\t" ;
         }
         cout << endl;
     }
@@ -112,6 +129,15 @@ void stiffnessMatrix::printMtrx(double** Mx,int n, char* name)
     
 }
 
+double stiffnessMatrix::gradToRad(double ang)
+{
+    double temp = 0;
+    
+    temp = ang * PI/180;
+    
+    return temp;
+}
+
 void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInput conn)
 {
     int rows, cols;
@@ -141,25 +167,25 @@ void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInp
     {
         for (int j=0;j<numberOfNodes; j++)
         {
-            marray[conn.c1][conn.c1] = k.kElement[0][0];
-            marray[conn.c1][conn.c2] = k.kElement[0][1];
-            marray[conn.c1][conn.c3] = k.kElement[0][2];
-            marray[conn.c1][conn.c4] = k.kElement[0][3];
+            marray[conn.c1-1][conn.c1-1] = k.kElement[0][0]; // -1 because for loop starts from zero and the problem description
+            marray[conn.c1-1][conn.c2-1] = k.kElement[0][1];
+            marray[conn.c1-1][conn.c3-1] = k.kElement[0][2];
+            marray[conn.c1-1][conn.c4-1] = k.kElement[0][3];
             
-            marray[conn.c2][conn.c1] = k.kElement[1][0];
-            marray[conn.c2][conn.c2] = k.kElement[1][1];
-            marray[conn.c2][conn.c3] = k.kElement[1][2];
-            marray[conn.c2][conn.c4] = k.kElement[1][3];
+            marray[conn.c2-1][conn.c1-1] = k.kElement[1][0];
+            marray[conn.c2-1][conn.c2-1] = k.kElement[1][1];
+            marray[conn.c2-1][conn.c3-1] = k.kElement[1][2];
+            marray[conn.c2-1][conn.c4-1] = k.kElement[1][3];
             
-            marray[conn.c3][conn.c1] = k.kElement[2][0];
-            marray[conn.c3][conn.c2] = k.kElement[2][1];
-            marray[conn.c3][conn.c3] = k.kElement[2][2];
-            marray[conn.c3][conn.c4] = k.kElement[2][3];
+            marray[conn.c3-1][conn.c1-1] = k.kElement[2][0];
+            marray[conn.c3-1][conn.c2-1] = k.kElement[2][1];
+            marray[conn.c3-1][conn.c3-1] = k.kElement[2][2];
+            marray[conn.c3-1][conn.c4-1] = k.kElement[2][3];
             
-            marray[conn.c4][conn.c1] = k.kElement[3][0];
-            marray[conn.c4][conn.c2] = k.kElement[3][1];
-            marray[conn.c4][conn.c3] = k.kElement[3][2];
-            marray[conn.c4][conn.c4] = k.kElement[3][3];
+            marray[conn.c4-1][conn.c1-1] = k.kElement[3][0];
+            marray[conn.c4-1][conn.c2-1] = k.kElement[3][1];
+            marray[conn.c4-1][conn.c3-1] = k.kElement[3][2];
+            marray[conn.c4-1][conn.c4-1] = k.kElement[3][3];
             
         }
     }

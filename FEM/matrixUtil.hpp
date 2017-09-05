@@ -49,7 +49,7 @@ public:
     
     double** sumMatrix(double** A, double** B, int n);
     
-    matrixUtil friend operator +(matrixUtil,matrixUtil);
+    matrixUtil friend operator +(matrixUtil,matrixUtil); //EXTRA POINTS
     
     inline FEMRESULT Set(int row,int column,const double &v);
     

@@ -17,7 +17,7 @@ matrixUtil::matrixUtil()
 
 matrixUtil::~matrixUtil()
 {
-    if(tmp!=NULL)
+   /*if(tmp!=NULL)
     {
         delete tmp;
     }
@@ -25,7 +25,9 @@ matrixUtil::~matrixUtil()
     {
         delete [] dat;
         dat=NULL;
-    }}
+    }
+    */
+}
 
 matrixUtil::matrixUtil(const matrixUtil &from)
 {
@@ -45,6 +47,7 @@ void matrixUtil::CreateWithoutClear(int nr, int nc)
         if(dat!=NULL)
         {
             delete [] dat;
+            
         }
         nRow=nr;
         nColumn=nc;
@@ -72,6 +75,8 @@ void matrixUtil::Create(int nr,int nc,const double *d)
 
 double** matrixUtil::sumMatrix(double **A, double **B, int n)
 {
+   
+    
     double** K = new double*[n];
     for (int i=0; i<n ; i++)
     {

@@ -24,6 +24,7 @@ int main(int argc, const char * argv[]) {
     cout << "\n   Loading File...... \n\n\n\n";
     read.readWorkingFile("workingFile.FEMUSF");
     
+    //Just shows the number of nodes from variable numberOfNodesGlobal on callss readFile
     int numberOfNodes = read.numberOfNodesGlobal;
     printf("Number of Nodes = %d\n",numberOfNodes);
     

@@ -22,7 +22,7 @@ readFile::~readFile()
 void readFile::readWorkingFile(const char* file)
 {
     elements = (nodeInput *) malloc(1000*sizeof(nodeInput)); //max number of nodes in this implementation
-    conn = (nodeInput *) malloc(1000*sizeof(nodeInput)); //max number connectivity (WRONG!)
+    conn = (nodeInput *) malloc(1000*sizeof(nodeInput));        //max number connectivity (WRONG!)
     
    
     int elementCounter = 0;
@@ -38,7 +38,7 @@ void readFile::readWorkingFile(const char* file)
     try
     {
         string line;
-        string str = "/Users/diegoandrade/Dropbox/USF/2017/FEM/FEM/";  //change here for your local folder
+        string str = "/Users/diegoandrade/Dropbox/USF/2017/FEM/FEM/";  //here change to your local folder
         str.append(file);
 
         
@@ -190,7 +190,8 @@ void readFile::readWorkingFile(const char* file)
         
         
         matrixUtil matrixA, matrixB, matrixC;
-
+        
+        
         globalMatrix.globalMatrix(numberOfNodesGlobal, kelement[0], conn[0]);
         
         matrixA.m = numberOfNodesGlobal;
@@ -198,7 +199,7 @@ void readFile::readWorkingFile(const char* file)
         
         cout << "m= " << matrixA.m << " n= " << matrixA.n << "\n";
         
-        cout << "MATRIX A: \n";
+        cout << "\nMATRIX A: \n";
         
         matrixA.MX = globalMatrix.GLOBAL_K;
         
@@ -246,10 +247,6 @@ void readFile::readWorkingFile(const char* file)
             }
             cout << "\n" ;
         }
-        
-
-        
-
         
     }
     

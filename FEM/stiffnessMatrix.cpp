@@ -27,8 +27,8 @@ void stiffnessMatrix::elementStiffnessMatrix(double A, double L, double E, doubl
 {
     double k = double(A*E)/L ;
     
-    double nang = 0;
-    nang = gradToRad(ang);
+    double nang = ang;
+    //nang = gradToRad(ang);
     
     kElement[0][0] = k* pow(cos(nang),2);
     kElement[0][1] = k* sin(nang)*cos(nang);
@@ -129,14 +129,14 @@ void stiffnessMatrix::printMtrx(double** Mx,int n, char* name)
     
 }
 
-double stiffnessMatrix::gradToRad(double ang)
+/*double stiffnessMatrix::gradToRad(double ang)
 {
     double temp = 0;
     
     temp = ang * PI/180;
     
     return temp;
-}
+}*/
 
 void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInput conn)
 {

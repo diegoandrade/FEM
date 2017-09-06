@@ -37,9 +37,6 @@ public:
     
     double** readWorkFile(const char* file);
     
-   
-    
-
 
 };
 

@@ -64,7 +64,7 @@ public:
     
     void globalMatrix(int numberOfNodes, stiffnessMatrix kelement, nodeInput conn);
 
-    double gradToRad (double ang);
+    //double gradToRad (double ang);
     
     
 };

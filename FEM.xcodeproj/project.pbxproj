@@ -71,10 +71,10 @@
 		B5C7219E1F5895B500AAF529 /* FEM */ = {
 			isa = PBXGroup;
 			children = (
-				B53D46ED1F5E0E9600519221 /* matrixUtil.cpp */,
 				B53D46F01F5E338F00519221 /* FEMdef.h */,
-				B53D46EE1F5E0E9600519221 /* matrixUtil.hpp */,
 				B518D5301F58F14D0022C51E /* Common.h */,
+				B53D46ED1F5E0E9600519221 /* matrixUtil.cpp */,
+				B53D46EE1F5E0E9600519221 /* matrixUtil.hpp */,
 				B5C7219F1F5895B500AAF529 /* main.cpp */,
 				B5C721A61F58963700AAF529 /* readFile.cpp */,
 				B5C721A71F58963700AAF529 /* readFile.hpp */,

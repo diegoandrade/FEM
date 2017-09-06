@@ -13,7 +13,7 @@ typedef enum
 {
     FEMERR,
     FEMOK
-} FEMRESULT;
+} FEMRESULT; //works like a boolean operator
 
 
 #endif /* FEMdef_h */

@@ -20,14 +20,13 @@ Please create a folder using this files to create your own solver for finite ele
 
 3. Create a method that creates a vector to store the forces on our system check slide 8 of class05.
 
-> Deliverables
+# Deliverables
 
-a) Print out the three methods 
-b) Print out of K[Global] Matrix(12x12)
+> a) Print out the three methods
+
+> b) Print out of K[Global] Matrix(12x12)
 
 * Compare the results with your hand calculations
 
 # Note 
 Uncomment gradToRad() method in lines 32 and 133 for stiffnessMatrix.cpp, this will change the calculations on elementStiffnessMatrix() method. 
-
-

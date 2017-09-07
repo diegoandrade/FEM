@@ -1,0 +1,4 @@
+﻿  readFile.cpp
+c:\users\diegoandrade\documents\visual studio 2015\projects\fem\fem\readfile.cpp(267): warning C4101: 'sz': unreferenced local variable
+  FEM.vcxproj -> C:\Users\diegoandrade\Documents\Visual Studio 2015\Projects\FEM\Debug\FEM.exe
+  FEM.vcxproj -> C:\Users\diegoandrade\Documents\Visual Studio 2015\Projects\FEM\Debug\FEM.pdb (Full PDB)

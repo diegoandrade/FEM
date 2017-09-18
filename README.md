@@ -7,6 +7,7 @@ Please create a folder using this files to create your own solver for finite ele
 
 1. Download the files to your computer
 2. Look for FEM.sln
+3. Move the folder /FEMData to C:/Temp/ otherwise the system will not find the initial information
 3. If you intalled VC++ you will be able to run the program directly by double clicking the icon.
 4. Go to readFile.cpp
 5. Add breakpoints to look at the program functionality.

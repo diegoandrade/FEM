@@ -24,8 +24,8 @@ Please create a folder using this files to create your own solver for finite ele
 
 # Deliverables
 
-> a) Print out the three methods.
+> a) Print out the three methods (only your code snipets).
 
-> b) Print out of K[Global] Matrix(12x12).
+> b) Print out of K[Global] Matrix(12x12). Since the matrix is too big for one single page, print K1,1 = ; K2,2 = ; ... ; k12,12 in a column. 
 
 * Compare the results with your hand calculations

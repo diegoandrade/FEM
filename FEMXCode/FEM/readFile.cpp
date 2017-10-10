@@ -23,22 +23,20 @@ void readFile::readWorkingFile(const char* file)
 {
     elements = (nodeInput *) malloc(1000*sizeof(nodeInput)); //max number of nodes in this implementation
     conn = (nodeInput *) malloc(1000*sizeof(nodeInput));        //max number connectivity (WRONG!)
+    forces = (nodeInput *) malloc(1000*sizeof(nodeInput));        //max number connectivity (WRONG!)
     
-   
     int elementCounter = 0;
     int connectivityCounter = 0;
-    
+    int forceCounter = 0;
     int numberOfNodes=0;
 
-    
     string tempvalue = "";
     std::string::size_type sz;
 
-    
     try
     {
         string line;
-        string str = "/Users/diegoandrade/Dropbox/USF/2017/FEM/FEM/";  //here change to your local folder
+        string str = "/Users/diegoandrade/Dropbox/USF/2017/FEM/FEM/FEMXCode/";  //here change to your local folder
         str.append(file);
 
         
@@ -145,6 +143,23 @@ void readFile::readWorkingFile(const char* file)
               
                     
                 }
+                
+                else if (tokens[0] == "F" && foundN==true)
+                {
+                    D( cout << "FOUND F" << '\n'; )
+                    cout << "FOUND F" << '\n';
+                    
+                    //extract the information and pases it to class nodes -> connectivity
+                    tempvalue = tokens[1];
+                    forces[forceCounter].fx = stod(tempvalue, &sz);
+                    tempvalue = tokens[2];
+                    forces[forceCounter].fy = stod(tempvalue, &sz);
+                    tempvalue = tokens[3];
+
+                    forceCounter++;
+                    
+                    
+                }
                 else if (tokens[0] == "END" )
                 {
                     foundEND = true;
@@ -164,89 +179,65 @@ void readFile::readWorkingFile(const char* file)
         
         stiffnessMatrix globalMatrix; //creates an object from class stiffnessMatrix
         
-        kelement[0].elementStiffnessMatrix(A, elements[0].l, E, elements[0].ang);
-        kelement[0].printMtrx(to_string(0+1));
-
-        kelement[1].elementStiffnessMatrix(A, elements[1].l, E, elements[1].ang);
-        kelement[1].printMtrx(to_string(1+1));
-        
-        kelement[2].elementStiffnessMatrix(A, elements[2].l, E, elements[2].ang);
-        kelement[2].printMtrx(to_string(2+1));
-        
-        kelement[3].elementStiffnessMatrix(A, elements[3].l, E, elements[3].ang);
-        kelement[3].printMtrx(to_string(3+1));
-        
-        kelement[4].elementStiffnessMatrix(A, elements[4].l, E, elements[4].ang);
-        kelement[4].printMtrx(to_string(4+1));
-        
-        kelement[5].elementStiffnessMatrix(A, elements[5].l, E, elements[5].ang);
-        kelement[5].printMtrx(to_string(5+1));
-        
-        kelement[6].elementStiffnessMatrix(A, elements[6].l, E, elements[6].ang);
-        kelement[6].printMtrx(to_string(6+1));
-        
-        kelement[7].elementStiffnessMatrix(A, elements[7].l, E, elements[7].ang);
-        kelement[7].printMtrx(to_string(7+1));
-        
+        for (int i=0;i<8;i++)
+        {
+            kelement[i].elementStiffnessMatrix(A, elements[i].l, E, elements[i].ang);
+            kelement[i].printMtrx(to_string(i+1));
+        }
         
         matrixUtil matrixA, matrixB, matrixC;
-        
+        matrixA.m = matrixB.m =  matrixC.m = numberOfNodesGlobal;
+        matrixA.n = matrixB.n =  matrixC.n = numberOfNodesGlobal;
         
         globalMatrix.globalMatrix(numberOfNodesGlobal, kelement[0], conn[0]);
-        
-        matrixA.m = numberOfNodesGlobal;
-        matrixA.n = numberOfNodesGlobal;
-        
-        cout << "m= " << matrixA.m << " n= " << matrixA.n << "\n";
-        
-        cout << "\nMATRIX A: \n";
-        
         matrixA.MX = globalMatrix.GLOBAL_K;
         
-        for (int i=0;i<numberOfNodesGlobal; i++)
-        {
-            for(int j=0;j<numberOfNodesGlobal;j++)
-            {
-               cout << "| " << setw(10) << matrixA.MX[i][j] << "|";
-            }
-            cout << "\n" ;
-        }
-
-        cout << "\nMATRIX B: \n";
-
-        
         globalMatrix.globalMatrix(numberOfNodesGlobal, kelement[1], conn[1]);
-        matrixB.m = numberOfNodesGlobal;
-        matrixB.n = numberOfNodesGlobal;
         matrixB.MX = globalMatrix.GLOBAL_K;
-        
-        for (int i=0;i<numberOfNodesGlobal; i++)
-        {
-            for(int j=0;j<numberOfNodesGlobal;j++)
-            {
-                 cout << "| " << setw(10) << matrixB.MX[i][j] << "|";
-            }
-            cout << "\n" ;
-        }
-        
-        cout << "\nMATRIX C: \n";
-        matrixC.m = numberOfNodesGlobal;
-        matrixC.n = numberOfNodesGlobal;
-       
-        //matrixC = matrixA + matrixB;
 
         matrixC.MX = matrixC.sumMatrix(matrixA.MX, matrixB.MX, numberOfNodesGlobal);
         
+        for (int k=2;k<8;k++)
+        {
+            matrixA.MX = matrixC.MX;
+            globalMatrix.globalMatrix(numberOfNodesGlobal, kelement[k], conn[k]);
+            matrixB.MX = globalMatrix.GLOBAL_K;
+            matrixC.MX = matrixC.sumMatrix(matrixA.MX, matrixB.MX, numberOfNodesGlobal);
+        }
+        
+        cout << "\n GLOBAL STIFNESS MATRIX [K_G]: \n";
         for (int i=0;i<numberOfNodesGlobal; i++)
         {
             for(int j=0;j<numberOfNodesGlobal;j++)
             {
                 
-                cout << "| " << setw(10) << matrixC.MX[i][j] << "|";
-
+                cout << "| " << setw(11) << matrixC.MX[i][j] << "|";
+                
             }
             cout << "\n" ;
         }
+        
+        double * forceTemp = new double [numberOfNodesGlobal];
+        
+        for (int i=0;i<numberOfNodesGlobal;i++)
+        {
+            forceTemp[i]=0.0;
+        }
+        
+        for (int i=0;i<numberOfNodesGlobal;i++)
+        {
+            forceTemp[2*i]=forces[i].fx;
+            forceTemp[2*i+1]=forces[i].fy;
+        }
+        
+        cout << "\nFORCE VECTOR [F]: \n";
+        for(int j=0;j<numberOfNodesGlobal;j++)
+        {
+            
+            cout << "Force[" << j+1 << "]: " << setw(0) << forceTemp[j] << endl;
+            
+        }
+        cout << "\n" ;
         
     }
     

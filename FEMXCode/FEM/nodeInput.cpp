@@ -38,6 +38,12 @@ nodeInput::nodeInput(int C1, int C2, int C3, int C4)
 
 }
 
+nodeInput::nodeInput(double FX, double FY)
+{
+    this->fx = FX;
+    this->fy = FY;
+}
+
 int nodeInput::findBiggestElement(nodeInput A)
 {
     int temp =0;

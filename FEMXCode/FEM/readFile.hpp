@@ -29,6 +29,8 @@ public:
     
     nodeInput* elements;
     nodeInput* conn;
+    nodeInput* forces;
+    
     stiffnessMatrix* kelement;
     
     int interiorCounter;

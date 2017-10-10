@@ -58,6 +58,9 @@ public:
     // For Internal Use
     matrixUtil *UseTemporaryMatrix(void) const;
     
+    
+    //Jacobi Rotations Solver
+    
 };
 
 inline const matrixUtil &operator+(const matrixUtil &a,const matrixUtil &b)

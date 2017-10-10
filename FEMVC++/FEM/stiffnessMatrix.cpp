@@ -130,14 +130,14 @@ void stiffnessMatrix::printMtrx(double** Mx, int n, char* name)
 
 }
 
-/*double stiffnessMatrix::gradToRad(double ang)
+double stiffnessMatrix::gradToRad(double ang)
 {
 double temp = 0;
 
 temp = ang * PI/180;
 
 return temp;
-}*/
+}
 
 void stiffnessMatrix::globalMatrix(int numberOfNodes, stiffnessMatrix k, nodeInput conn)
 {

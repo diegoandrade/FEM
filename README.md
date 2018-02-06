@@ -21,11 +21,3 @@ Please create a folder using this files to create your own solver for finite ele
 > 2. Create a method that sums all the Kelements for the eight elements K(global) = k(1) + ... + k(8).
 
 > 3. Create a method that defines a vector where to store the forces on our system check class06.
-
-# Deliverables
-
-> a) Print out the three methods (only your code snipets).
-
-> b) Print out of K[Global] Matrix(12x12). Since the matrix is too big for one single page, print K1,1 = ; K2,2 = ; ... ; k12,12 in a column. 
-
-* Compare the results with your hand calculations

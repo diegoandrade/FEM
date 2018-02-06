@@ -20,7 +20,7 @@ Please create a folder using this files to create your own solver for finite ele
 
 > 2. Create a method that sums all the Kelements for the eight elements K(global) = k(1) + ... + k(8).
 
-> 3. Create a method that defines a vector where to store the forces on our system check slide 8 for class05.
+> 3. Create a method that defines a vector where to store the forces on our system check class06.
 
 # Deliverables
 
